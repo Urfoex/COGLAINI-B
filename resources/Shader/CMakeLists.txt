@@ -1,0 +1,23 @@
+IF( NOT ( ${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR}))
+	FILE( GLOB thisDir RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" *.vert )
+	foreach( myFile  ${thisDir})
+		CONFIGURE_FILE( ${myFile} ${CMAKE_CURRENT_BINARY_DIR}/ COPYONLY)
+	endforeach()
+ENDIF()
+
+FILE( GLOB thisDir RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" *.vert )
+foreach( myFile  ${thisDir})
+	INSTALL( FILES ${myFile} DESTINATION resources/Shader )
+endforeach()
+
+IF( NOT ( ${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR}))
+	FILE( GLOB thisDir RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" *.frag )
+	foreach( myFile  ${thisDir})
+		CONFIGURE_FILE( ${myFile} ${CMAKE_CURRENT_BINARY_DIR}/ COPYONLY)
+	endforeach()
+ENDIF()
+
+FILE( GLOB thisDir RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" *.frag )
+foreach( myFile  ${thisDir})
+	INSTALL( FILES ${myFile} DESTINATION resources/Shader )
+endforeach()
